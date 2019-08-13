@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Proveedor para el conector con nuestra base de datos mongodb
+         */
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
+
     ],
 
     /*

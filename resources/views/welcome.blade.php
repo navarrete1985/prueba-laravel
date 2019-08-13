@@ -61,10 +61,70 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .flex-center {
+                display: flex;
+                flex-flow: column;
+            }
+
+            .mt-5 {
+                margin-top: calc(5 * 8px);
+            }
+
+            .item-list {
+                min-width: 700px;
+            }
+
+            .item-list table {
+                display: flex;
+                flex-flow: column;
+                padding: 16px;
+                max-width: 100%;
+            }
+
+            .item-list table thead, .item-list table tbody {
+                display: flex;
+                flex-grow: 1;
+                min-width: 100%;
+            }
+
+            tbody {
+                flex-flow: column;
+            }
+
+            tr {
+                border-bottom: 1px solid lightblue;
+                padding: 4px;
+            }
+
+            td {
+                margin-right: 6px;
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: lightblue;
+            }
+
+            tr {
+                display: flex;
+                flex-grow: 1;
+            }
+
+            td {
+                flex: 1 1 60px;
+                overflow: hidden;
+            }
+
+            .overflow-ellipsis {
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -93,6 +153,40 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+            </div>
+            <div class="mt-5 item-list">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Apellidos</td>
+                        <td>Email</td>
+                        <td>Contraseña</td>
+                        <td>Url Imagen</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>
+                                <span class="overflow-ellipsis">{{$user->name}}</span>
+                            </td>
+                            <td>
+                                <span class="overflow-ellipsis">{{$user->lastName}}</span>
+                            </td>
+                            <td>
+                                <span class="overflow-ellipsis">{{$user->email}}</span>
+                            </td>
+                            <td>
+                                <span class="overflow-ellipsis">{{$user->password}}</span>
+                            </td>
+                            <td>
+                                <span class="overflow-ellipsis">{{$user->photo_url}}</span>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
